@@ -3,7 +3,6 @@ var url = require("url");
 var express = require('express');
 var path = require('path');
 var app = express();
-var cron = require('node-cron');
 var mosca = require('mosca');
 var server = require('http').Server(app);
 var port = normalizePort(process.env.PORT || 8081);
@@ -61,9 +60,12 @@ function parseJSONorNot(mayBeJSON) {
 		return mayBeJSON;
 	}
 }
-var privateID = '206.81.5.97';
+var privateID = '127.0.0.1';
+// var privateID = '206.81.5.97';
 // var privateID = '10.10.0.5';
 
+var SECURE_KEY = path.join(__dirname, 'vault-key.pem')
+var SECURE_CERT = path.join(__dirname, 'vault-cert.pem')
 //Private IP address
 var pubsubsettings = {
     type: 'mqtt',
@@ -71,6 +73,11 @@ var pubsubsettings = {
     mqtt: require('mqtt'),
     host: privateID,
     port: 1883,
+    secure: {
+      port: 8883,
+      keyPath: SECURE_KEY,
+      certPath: SECURE_CERT
+    },
     http: {
       port: 3001,
       bundle: true,

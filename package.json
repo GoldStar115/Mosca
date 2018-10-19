@@ -11,16 +11,12 @@
     "MQTT",
     "Serverclient"
   ],
-  "author": "Adrian",
+  "author": "Admin",
   "license": "ISC",
   "dependencies": {
-    "ejs": "^2.5.7",
     "express": "^4.15.4",
     "http": "0.0.0",
     "mosca": "^2.7.0",
-    "mqtt": "^2.14.0",
-    "node-cron": "^1.2.1",
-    "request": "^2.81.0",
-    "socket.io": "^2.0.3"
+    "mqtt": "^2.14.0"
   }
 }
